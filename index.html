@@ -1,81 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Spawn Corp Games Recovery Node</title>
-  <style>
-    body {
-      font-family: monospace;
-      background-color: #0a0f15;
-      color: #00ffcc;
-      padding: 30px;
-    }
-    h1, h2 {
-      color: #ffaa00;
-    }
-    .section {
-      margin-bottom: 40px;
-    }
-    .wall {
-      background-color: #1a1a1a;
-      padding: 15px;
-      border-left: 5px solid #ffaa00;
-      margin: 20px 0;
-    }
-    .ps {
-      font-style: italic;
-      color: #cccccc;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spawn Corp Recovery Terminal</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+  body {
+    margin: 0; padding: 20px;
+    background: #000;
+    color: #00ff99;
+    font-family: 'Share Tech Mono', monospace;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 20px;
+  }
+  header img {
+    width: 64px; height: 64px;
+    border-radius: 12px;
+    border: 2px solid #00ff99;
+    filter: drop-shadow(0 0 10px #00ff99);
+  }
+  header h1 {
+    font-size: 2rem;
+    text-shadow:
+      0 0 8px #00ff99,
+      0 0 20px #00ff99;
+    margin: 0;
+    user-select: text;
+  }
+  #codeSection {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  #codeInput {
+    flex: 1;
+    padding: 10px 14px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 18px;
+    border: 2px solid #00ff99;
+    border-radius: 8px;
+    background: #002210;
+    color: #00ff99;
+    box-shadow: 0 0 10px #00ff99 inset;
+  }
+  #codeInput::placeholder {
+    color: #005522;
+  }
+  #unlockBtn {
+    padding: 10px 20px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 18px;
+    color: #000;
+    background: #00ff99;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 0 15px #00ff99;
+  }
+  #unlockBtn:hover {
+    background: #00cc77;
+  }
+  #errorMsg {
+    color: #ff4444;
+    margin-top: 8px;
+    min-height: 20px;
+    user-select: none;
+  }
+  #iframeContainer {
+    width: 100%;
+    max-width: 900px;
+    height: 70vh;
+    border: 2px solid #00ff99;
+    border-radius: 10px;
+    box-shadow: inset 0 0 40px #00ff99;
+    display: none;
+  }
+  #spawnIframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+</style>
 </head>
 <body>
 
-  <h1>Spawn Corp Games™ Recovery Log</h1>
-  <div class="section">
-    <p>Welcome to the history node of <strong>Spawn Corp Games™</strong>. You used to work here. Everyone did. But the building doesn’t remember you anymore.</p>
-    <p>Explore archived data from Ryder's community. Files may be incomplete. Memories may not be your own.</p>
-    <p><strong>Search My Communities:</strong></p>
-    <ul>
-      <li><strong>Spawn Corp Games</strong> - By RYDER_bloxman (76 Members)</li>
-    </ul>
-  </div>
+<header>
+  <img src="https://tr.rbxcdn.com/2a3e8c7c2a8c3e407fdfbc31452a6a7c/150/150/Image/Png" alt="Spawn Corp Logo" />
+  <h1>🧠 Spawn Corp Recovery Terminal</h1>
+</header>
 
-  <div class="section">
-    <h2>📣 Announcements</h2>
-    <div class="wall">
-      <p>Hello Player!</p>
-      <p>I, <strong>RYDER_bloxman</strong>, would like to announce the new era of "The Bloxman's"! Our games are going to be BETTER. Our SCRIPTS are going to be better. Our MAPS are going to be better.</p>
-      <p>Unfortunately, I still have literally NO IDEA HOW TO CODE, so this means I am accepting new developers!</p>
-      <p>If you would like the chance to become a developer at "The Bloxman's", just reach out on the group wall!</p>
-      <p class="ps">PS: The Bloxman's is now <strong>Spawn Corp Games™</strong></p>
-    </div>
-    <div class="wall">
-      <p><strong>Trademark Notice:</strong></p>
-      <p>Spawn Corp Games™ ᴮᵃ is now the exclusive brand of Ryder ("Bloxman"). The ᴮᵃ mark means Bloxman Approved.</p>
-      <p>Unauthorized use may result in vaporization. Or a strongly worded wall post. Probably both.</p>
-      <p class="ps">PS: This is a branding policy not a registered trademark!</p>
-    </div>
-  </div>
+<div id="codeSection">
+  <input id="codeInput" type="text" placeholder="Enter recovery code..." autocomplete="off" spellcheck="false" />
+  <button id="unlockBtn">Unlock</button>
+</div>
 
-  <div class="section">
-    <h2>🎮 Games</h2>
-    <ul>
-      <li>Space Shooter's (SECRET BUNKER) – 90%</li>
-      <li>Legacy Western ROBLOX Template – 100%</li>
-      <li>VERSG – 75%</li>
-      <li>SUPER BLOXMAN CHAOTIC ADMIN GAM – 100%</li>
-      <li>Free Admin But Bad – 100%</li>
-      <li>Epic Bloxmanini Games! – 100%</li>
-    </ul>
-  </div>
+<div id="errorMsg"></div>
 
-  <div class="section">
-    <h2>💬 Wall Highlights</h2>
-    <div class="wall">ErrorUserBloxman: RIP "The Bloxmans!" 2022–2025</div>
-    <div class="wall">Noobynost: Congrats on 70 Members</div>
-    <div class="wall">john: this has the best game</div>
-    <div class="wall">RYDER_bloxman: yo guys i just wanna say dont worry abt the legal stuff above if ur mah friend bc i wont sue you</div>
-    <div class="wall">cup: bro i just fartedd and 679 people died</div>
-  </div>
+<div id="iframeContainer">
+  <iframe
+    id="spawnIframe"
+    src="https://www.roblox.com/communities/16598616/Spawn-Corp-Games#!/about"
+    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+    title="Spawn Corp Games Community"
+  ></iframe>
+</div>
+
+<script>
+  const correctCode = "mr-spawn";
+  const codeInput = document.getElementById('codeInput');
+  const unlockBtn = document.getElementById('unlockBtn');
+  const errorMsg = document.getElementById('errorMsg');
+  const iframeContainer = document.getElementById('iframeContainer');
+
+  function unlock() {
+    const code = codeInput.value.trim().toLowerCase();
+    if (code === correctCode) {
+      errorMsg.textContent = '';
+      // Hide input section
+      document.getElementById('codeSection').style.display = 'none';
+      // Show iframe container
+      iframeContainer.style.display = 'block';
+    } else {
+      errorMsg.textContent = 'Invalid code. Try again.';
+    }
+  }
+
+  unlockBtn.addEventListener('click', unlock);
+  codeInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') unlock();
+  });
+</script>
 
 </body>
 </html>
